@@ -8,6 +8,7 @@ ERR=""
 PA=""
 
 
+# Go through all parameters
 while [[ $# > 0 ]]
 do
 key="$1"
@@ -34,12 +35,14 @@ esac
 shift
 done
 
+# Print catkin_make command
 if [[ -z "$PKG1" ]]; then
 	echo -e "${yellow}Running catkin_make${NC}"
 else
 	echo -e "${yellow}Running catkin_make on package $PKG2 ${NC}"
 fi
 
+# Execute catkin_make command
 if [[ -z "$ERR" ]]; then
 	(cd ~/catkin_ws && catkin_make ${PKG1} ${PKG2})
 else
